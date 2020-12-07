@@ -2,6 +2,92 @@ body {
   font-family: Helvetica;
 }
 .app {
-  margin-top: 20px;
-  margin-bottom: 20px;
+  display: flex;
+  height: 100vh;
+  h2 {
+    font-weight: bold;
+    font-size: 24px;
+    padding-left: 20px;
+  }
+  h3 {
+    font-weight: bold;
+    font-size: 32px;
+  }
+  .side-bar {
+    background-color: #DBDBDB;
+    width: 5%;
+    padding: 20px;
+    font-size: 40px;
+    text-align: center;
+  }
+  .channel-list {
+    background-color: #F4F4F4;
+    width: 25%;
+    padding: 32px;
+    h4 {
+      font-weight: bold;
+      font-size: 20px;
+      color: grey;
+      margin-bottom: 30px;
+    }
+    .active {
+      color: black;
+    }
+  }
+  .chat {
+    width: 70%;
+    position: relative;
+  }
+  .message-list {
+    position: absolute;
+    bottom: 70px;
+    height: 60%;
+    padding: 20px;
+    width: 100%;
+    overflow: auto;
+  }
+  .message {
+    padding: 10px 10px 4px 10px;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    border: 1px solid #DBDBDB;
+    width: 100%;
+    .sender {
+      display: flex;
+      line-height: 16px;
+      h4 {
+        font-weight: bold;
+        margin: 0 0 10px;
+        color: #4DD2A3;
+        font-size: 16px;
+      }
+      p {
+        font-size: 10px;
+        // margin: 0;
+        color: grey;
+        font-style: italic;
+      }
+    }
+  }
+  .message-form {
+    position: absolute;
+    bottom: 10px;
+    padding: 20px;
+    display: flex;
+    width: 100%;
+    input {
+      padding: 10px;
+      border: 1px solid #DBDBDB;
+      color: black;
+      width: 90%;
+    }
+    .send-btn {
+      padding: 6px;
+      width: 10%;
+      font-weight: bold;
+      border: none;
+      color: white;
+      background-color: #D13333;
+    }
+  }
 }
