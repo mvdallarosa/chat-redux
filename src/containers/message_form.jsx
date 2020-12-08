@@ -12,7 +12,7 @@ class MessageForm extends Component {
   }
 
   handleSubmit = (event) => {
-    this.props.createMessage("general", 'meri', this.state.content)
+    this.props.createMessage(this.props.selectedChannel, this.props.currentUser, this.state.content)
   }
   render() {
     return (
@@ -32,4 +32,11 @@ function mapDispatchToProps(dispatch) {
     dispatch );
 }
 
-export default connect(mapDispatchToProps)(MessageForm);
+function mapStateToProps(state) {
+  return {
+    currentUser: state.currentUser,
+    selectedChannel: state.selectedChannel
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MessageForm);

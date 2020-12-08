@@ -5,17 +5,29 @@ import { bindActionCreators } from 'redux';
 
 class MessageList extends Component {
   componentWillMount() {
-    this.props.fetchMessages('general')
+    this.props.fetchMessages(this.props.selectedChannel)
   }
+ componentDidMount() {
+    this.refresher = setInterval(this.props.fetchMessages(this.props.selectedChannel), 5000);
+  }
+
+  componentDidUpdate() {
+    this.list.scrollTop = this.list.scrollHeight;
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.refresher);
+  }
+
   render() {
     return (
-      <div className="message-list">
+      <div className="message-list" ref={(list) => { this.list = list; }}>
         {this.props.messages === null ? "" : this.props.messages.map(message => <Message message={message} />) }
       </div>
     );
   }
   componentDidMount() {
-    this.props.fetchMessages('general')
+    this.props.fetchMessages(this.props.selectedChannel)
   }
 };
 
@@ -30,7 +42,7 @@ function mapDispatchToProps(dispatch) {
 function mapStateToProps(state) {
   return {
     messages: state.messages,
-    channel: 'general'
+    selectedChannel: state.selectedChannel
   };
 }
 

@@ -7,7 +7,7 @@ class Chat extends Component {
   render() {
     return (
       <div className="chat">
-        <h2>Channel #general</h2>
+        <h2>Channel #{this.props.selectedChannel}</h2>
         <MessageList/>
         <MessageForm/>
       </div>
@@ -15,4 +15,10 @@ class Chat extends Component {
   }
 };
 
-export default Chat
+function mapStateToProps(state) {
+  return {
+    selectedChannel: state.selectedChannel
+  };
+}
+
+export default connect(mapStateToProps)(Chat);
